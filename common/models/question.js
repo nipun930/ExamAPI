@@ -1,16 +1,13 @@
 'use strict';
 
-module.exports = function(Question) {
-    Question.firstQuestion = function(cb) {
-        var res = Question.find({"where":{_id : "5e14c431d2fa64037018dd95"}},(err, res)=>{console.table(res)});
-        
-        var response = {name:"nipun"}
-        cb(null, response);
+module.exports = function (Question) {
+    Question.getQuestionWithId = function (id, cb) {
+        Question.find({"_id" : id.id}, (err, data)=>{
+            return cb(null, data);
+        });
     }
-    Question.remoteMethod(
-        'firstQuestion', {
-        http: { path: '/first', verb: 'get' },
-        returns: { arg: 'location', type: 'string' }
-    }
-    );
+    Question.remoteMethod('getQuestionWithId', {
+        accepts: {arg: 'id', type: 'object'},
+        returns: {arg: 'data', type: 'object'}
+    });
 };

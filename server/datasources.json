@@ -4,9 +4,9 @@
     "port": 27017,
     "url": "",
     "database": "Exam",
-    "password": "nipun",
+    "password": "admin",
     "name": "db",
-    "user": "nipun",
+    "user": "admin",
     "authSource": "admin",
     "connector": "mongodb"
   }
